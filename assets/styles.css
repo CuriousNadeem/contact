@@ -1,0 +1,445 @@
+/* Color Variables */
+:root {
+    --primary-bg-color: #1e1f29;
+    --secondary-bg-color: #15161c;
+    --primary-color: #5658dd;
+    --secondary-color: #8d8ae4;
+    --text-color: #f0f0f0;
+    --description-color: #b5b5d4;
+    --shadow-color: rgba(86, 88, 221, 0.7);
+    --button-hover-color1: #4b4cc9;
+    --button-hover-color2: #7b78d9;
+    --text-shadow-color: rgba(0, 0, 0, 0.5);
+}
+
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, var(--primary-bg-color) 25%, var(--secondary-bg-color) 75%);
+    color: var(--text-color);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('https://papers.co/wallpaper/papers.co-vc16-paper-creased-dark-texture-36-3840x2400-4k-wallpaper.jpg');
+    background-size: 200% 200%;
+    /* Adjust for larger movement */
+    animation: backgroundMove 10s linear infinite;
+    /* Constant background movement */
+}
+
+@media (max-width: 767px) {
+
+    /* Main Container to hold both resume and contact containers */
+    .main-container {
+        width: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+}
+
+@media (min-width: 768px) {
+
+    /* Main Container to hold both resume and contact containers */
+    .main-container {
+        width: 100%;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
+/* Resume Container - initially centered */
+.container {
+    position: absolute;
+    width: 50%;
+    /* Make both containers the same size */
+    transition: transform 0.5s ease-in-out;
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.1);
+    /* Light color with transparency */
+    border-radius: 15px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    /* Background blur effect */
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+    /* Subtle shadow for depth */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    /* Soft border for a polished look */
+}
+
+/* Contact Form Container - starts at the center and then moves right */
+.contact-container {
+    position: absolute;
+    width: 40%;
+    /* Make both containers the same size */
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+    opacity: 0;
+    z-index: 2;
+    display: block;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 255, 255, 0.1);
+    /* Same glass-like background */
+    border-radius: 15px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Keyframe Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideInFromLeft {
+    from {
+        transform: translateX(-100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInFromRight {
+    from {
+        transform: translateX(100%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes backgroundMove {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    100% {
+        background-position: 100% 100%;
+    }
+}
+
+
+
+/* Profile Image Styling */
+.profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 4px solid var(--primary-color);
+    background: url('https://mir-s3-cdn-cf.behance.net/user/115/951cd51750121147.65a2c9dd3360d.jpg') no-repeat center center/cover;
+    box-shadow: 0px 0px 20px 3px var(--shadow-color);
+    margin-bottom: 20px;
+    transition: transform 0.5s;
+}
+
+.profile-image:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+/* Typography */
+h1 {
+    font-size: 2.5rem;
+    color: var(--text-color);
+    margin-bottom: 10px;
+    text-shadow: 2px 2px 10px var(--text-shadow-color);
+    animation: slideInFromLeft 1s ease-in-out;
+}
+
+p.description {
+    font-size: 1.2rem;
+    color: var(--description-color);
+    margin-bottom: 30px;
+    line-height: 1.6;
+    max-width: 600px;
+    animation: slideInFromRight 1s ease-in-out;
+}
+
+/* Button Styling */
+.button {
+    padding: 10px 30px;
+    font-size: 1rem;
+    border-radius: 1000px;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--text-color);
+    text-transform: uppercase;
+    text-decoration: none;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    margin: 10px;
+    display: inline-block;
+}
+
+.button:hover {
+    background: linear-gradient(135deg, var(--primary-color-dark), var(--primary-color-darker));
+    transform: translateY(-2px);
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.button:active {
+    background: var(--primary-color-darker);
+    /* Even darker color when clicked */
+    transform: translateY(0);
+    /* Remove lift effect */
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Input and Textarea Styling */
+.contact-container input,
+.contact-container textarea {
+    width: calc(100% - 20px);
+    /* Adjust width to fit within container with padding */
+    padding: 12px;
+    /* Add padding for better spacing */
+    margin-bottom: 15px;
+    /* Space between elements */
+    border-radius: 10px;
+    /* Rounded corners */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    /* Soft border */
+    background: rgba(255, 255, 255, 0.2);
+    /* Slightly transparent background */
+    color: var(--text-color);
+    /* Text color from CSS variables */
+    font-family: 'Poppins', sans-serif;
+    /* Consistent font */
+    font-size: 16px;
+    /* Readable font size */
+    box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.2);
+    /* Inner shadow for depth */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    /* Smooth transition for focus */
+}
+
+/* Focus State for Inputs and Textarea */
+.contact-container input:focus,
+.contact-container textarea:focus {
+    border-color: var(--primary-color);
+    /* Highlight border color */
+    outline: none;
+    /* Remove default outline */
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.3);
+    /* Outer shadow for focus effect */
+}
+
+/* Button Styling within Contact Form */
+.contact-container .button-group button {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    border: none;
+    color: #fff;
+    /* White text */
+    padding: 10px 30px;
+    /* Padding for button size */
+    border-radius: 1000px;
+    /* Rounded corners */
+    font-size: 16px;
+    /* Consistent font size */
+    cursor: pointer;
+    /* Pointer cursor on hover */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    /* Smooth transitions */
+}
+
+/* Button Hover State */
+.contact-container .button-group button:hover {
+    background: linear-gradient(135deg, var(--primary-color-dark), var(--primary-color-darker));
+    transform: translateY(-2px);
+    /* Slight lift effect */
+}
+
+/* Button Active State */
+.contact-container .button-group button:active {
+    background: var(--primary-color-darker);
+    /* Even darker color when clicked */
+    transform: translateY(0);
+    /* Remove lift effect */
+}
+
+
+
+
+@media (max-width: 436px) {
+
+    /* max till 435px container */
+    .container {
+        width: 80%;
+        margin: auto;
+        transform: translateY(-35%);
+    }
+
+    .contact-container {
+        width: 80%;
+        margin: auto;
+    }
+
+    /* Animation */
+    .main-container.active .contact-container {
+        transform: translateY(120%);
+        /* Move to the center from the down */
+        opacity: 1;
+    }
+
+    .main-container.reverse .contact-container {
+        transform: translateY(-50%);
+        /* Move back to the down */
+        opacity: 0;
+    }
+}
+
+@media (min-width: 436px) and (max-width: 540px) {
+
+    /* Resume Container - initially centered */
+    .container {
+        width: 85%;
+        margin: auto;
+        transform: translateY(-45%);
+    }
+
+    .contact-container {
+        width: 85%;
+        margin: auto;
+    }
+
+    /* Animation */
+    .main-container.active .contact-container {
+        transform: translateY(90%);
+        /* Move to the center from the down */
+        opacity: 1;
+    }
+
+    .main-container.reverse .contact-container {
+        transform: translateY(-50%);
+        /* Move back to the down */
+        opacity: 0;
+    }
+}
+
+@media (min-width: 541px) and (max-width: 767px) {
+
+    /* max till 435px container */
+    .container {
+        width: 90%;
+        margin: auto;
+        transform: translateY(-50%);
+    }
+
+    .contact-container {
+        width: 90%;
+        margin: auto;
+        transform: translateY(-70%);
+    }
+
+    /* Animation */
+    .main-container.active .contact-container {
+        transform: translateY(70%);
+        /* Move to the center from the down */
+        opacity: 1;
+    }
+
+    .main-container.reverse .contact-container {
+        transform: translateY(-50%);
+        /* Move back to the down */
+        opacity: 0;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+
+    /* Resume Container - initially centered */
+    .container {
+        width: 400px;
+    }
+
+    /* Contact Form Container - starts at the center and then moves right */
+    .contact-container {
+        width: 300px;
+    }
+
+    /* Animation */
+    /* When contact form is visible and both containers move to their positions */
+    .main-container.active .container {
+        transform: translateX(-35%);
+        /* Moves up */
+    }
+
+    /* Smooth animation back to center */
+    .main-container.reverse .container {
+        transform: translateX(0%);
+    }
+
+    .main-container.active .contact-container {
+        transform: translateX(60%);
+        /* Move to the center from the down */
+        opacity: 1;
+    }
+
+    .main-container.reverse .contact-container {
+        transform: translateX(-50%);
+        /* Move back to the down */
+        opacity: 0;
+    }
+}
+
+@media (min-width: 992px) {
+
+    /* Resume Container - initially centered */
+    .container {
+        width: 500px;
+    }
+
+    /* Contact Form Container - starts at the center and then moves right */
+    .contact-container {
+        width: 350px;
+    }
+
+    /* Animation */
+    /* When contact form is visible and both containers move to their positions */
+    .main-container.active .container {
+        transform: translateX(-40%);
+        /* Moves up */
+    }
+
+    /* Smooth animation back to center */
+    .main-container.reverse .container {
+        transform: translateX(0%);
+    }
+
+    .main-container.active .contact-container {
+        transform: translateX(70%);
+        /* Move to the center from the down */
+        opacity: 1;
+    }
+
+    .main-container.reverse .contact-container {
+        transform: translateX(-50%);
+        /* Move back to the down */
+        opacity: 0;
+    }
+}
+
+@media (min-width: 1201px){
+
+    /* Resume Container - initially centered */
+    .container {
+        width: 600px;
+    }
+
+    /* Contact Form Container - starts at the center and then moves right */
+    .contact-container {
+        width: 400px;
+    }
+
+}
